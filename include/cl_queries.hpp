@@ -51,7 +51,7 @@ namespace CLQuery {
         std::string structure_name;
         std::string container_name;
         std::string obfuscate_type;
-    }
+    };
 
     /*
       * 2D queries
