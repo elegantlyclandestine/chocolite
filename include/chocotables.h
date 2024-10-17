@@ -30,8 +30,11 @@ namespace Chocotables {
         table(std::string name, std::vector<std::string>& headers, std::vector<Chocotables::cell>& cells) :
             name(name), headers(headers), cells(cells) {}
         ~table() {}
-        Chocotables::cell read_from_cell(int col, int row) {
+        std::string read_from_cell(int col, int row) {
             
+        }
+        Chocotables::cell find_cell_from_data(std::string content) {
+
         }
         void insert_data_to_cell(Chocotables::table& table, int col, int row, std::string content) {
 
@@ -68,10 +71,16 @@ namespace Chocotables {
         void move_table(Chocotables::table& table, int pos) {
 
         }
-        std::vector<Chocotables::cell> return_sort_vertical(Chocotables::table& table) {
+        void sort_table(Chocotables::table& table, std::string& sort_by) {
             
         }
-        std::vector<Chocotables::cell> return_sort_horizontal(Chocotables::table& table) {
+        Chocotables::table find_table_from_data(std::string content) {
+            
+        }
+        Chocotables::cell find_cell_from_data(std::string content) {
+            
+        }
+        std::vector<Chocotables::cell> return_sort(Chocotables::table& table, std::string& sort_by) {
             
         }
     };
