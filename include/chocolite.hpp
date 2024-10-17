@@ -20,10 +20,12 @@ namespace fs = std::filesystem;
 namespace Chocolite {
     // For command line / user-side interactions
     enum query { 
+        // Universal queries
+        finalise, pick, wipe, build, insert, obfuscate,
         // 2D queries
-        push2D, pick2D, grab2D,
+        push2D, grab2D, grab_range2D, make2D, erase2D,
         // 3D queries
-        push3D, pick3D, grab3D
+        push3D, grab3D, grab_range3D, make3D, erase3D
     };
     Chocolite::query check_query(std::string query);
     
