@@ -2,7 +2,7 @@
 ### <p align="center"><strong>An easy-to-use, no-frills SQL-like database system</strong></p>
 
 # Why Chocolite?
-With Chocolite, you could simply do this in code (assuming you have a container `main` with a table `HelloWorld` initialised:
+With Chocolite, you could simply do this in code (assuming you have a container `main` with a table `HelloWorld` initialised):
 ```cpp
 std::string hello_world = Chocolite::interpret(
     "PUSH \"Hello\" TO HelloWorld IN main AT 1,1
