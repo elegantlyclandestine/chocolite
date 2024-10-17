@@ -18,6 +18,7 @@ namespace Chocotables {
         std::string content;
         cell(int col, int row, std::string data_type, std::string content) :
             col(col), row(row), data_type(data_type), content(content) {}
+        ~cell() {}
     };
     class table {
     private:
