@@ -72,6 +72,31 @@ namespace CLQueries {
         Choco3D::container container;
         int pos;
     };
+    struct erase2D {
+        // ERASE DATA FROM {x, y} ON {table} IN {container}
+        Choco2D::container container;
+        Choco2D::table table;
+        int x;
+        int y;
+    };
+    struct erase3D {
+        // ERASE DATA FROM {x, y, z} ON {table} IN {container}
+        Choco3D::container container;
+        Choco3D::stock stock;
+        int x;
+        int y;
+        int z;
+    };
+    struct wipe2D {
+        // WIPE {table} IN {container}
+        Choco2D::container container;
+        Choco2D::table table;
+    };
+    struct wipe3D {
+        // WIPE {stock} IN {container}
+        Choco3D::container container;
+        Choco3D::stock stock;
+    };
 }
 
 #endif
