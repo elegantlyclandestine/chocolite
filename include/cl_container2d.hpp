@@ -1,6 +1,6 @@
 #pragma once
-#ifndef choco_container2d_hpp
-#define choco_container2d_hpp
+#ifndef cl_container2d_hpp
+#define cl_container2d_hpp
 
 #include <chocolite.hpp>
 
