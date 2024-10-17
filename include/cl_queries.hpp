@@ -4,7 +4,7 @@
 
 #include <chocolite.hpp>
 
-namespace CLQueries {
+namespace CLQuery {
     struct push2D {
         // PUSH {data} TO {table} IN {container} AT {x,y}
         std::string data;
