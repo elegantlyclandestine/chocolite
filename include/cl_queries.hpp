@@ -49,6 +49,14 @@ namespace CLQuery {
         int y;
         int z;
     };
+    struct build2D {
+        // BUILD 2D CONTAINER {container}
+        std::string name;
+    };
+    struct build3D {
+        // BUILD 3D CONTAINER {container}
+        std::string name;
+    };
     struct make2D {
         // MAKE {table} WITH HEADERS {headers}
         std::string name;
