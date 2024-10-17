@@ -1,5 +1,5 @@
 ![Chocolite logo: chocolate bar with a bite on the top left corner](https://i.ibb.co/b7G8Dnj/chocolite.png)
-:- **An easy-to-use, no-frills SQL-like database system** -:
+<p align="center"><strong>An easy-to-use, no-frills SQL-like database system</strong></p>
 
 # Why Chocolite?
 With Chocolite, you could simply do this in code:
