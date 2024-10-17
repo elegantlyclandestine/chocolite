@@ -1,4 +1,4 @@
-#include <chocolite.h>
+#include <chocolite.hpp>
 
 Choco2D::container Chocolite::load_2d_container(std::string container) {
     Choco2D::container c2d_container;
