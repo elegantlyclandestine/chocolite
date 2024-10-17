@@ -1,8 +1,8 @@
 #pragma once
-#ifndef choco_container3d_h
-#define choco_container3d_h
+#ifndef choco_container3d_hpp
+#define choco_container3d_hpp
 
-#include <chocolite.h>
+#include <chocolite.hpp>
 
 namespace Choco3D {
     struct block {

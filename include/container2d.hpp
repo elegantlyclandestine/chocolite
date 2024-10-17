@@ -1,8 +1,8 @@
 #pragma once
-#ifndef choco_container2d_h
-#define choco_container2d_h
+#ifndef choco_container2d_hpp
+#define choco_container2d_hpp
 
-#include <chocolite.h>
+#include <chocolite.hpp>
 
 namespace Choco2D {
     struct cell {

@@ -1,6 +1,6 @@
 #pragma once
-#ifndef chocolite_h
-#define chocolite_h
+#ifndef chocolite_hpp
+#define chocolite_hpp
 
 #include <vector>
 #include <string>
@@ -11,8 +11,8 @@
 #include <optional>
 #include <any>
 
-#include "container2d.h"
-#include "container3d.h"
+#include <container2d.hpp>
+#include <container3d.hpp>
 
 namespace fs = std::filesystem;
 
@@ -73,6 +73,24 @@ namespace Chocolite {
         // MAKE {table} WITH HEADERS {headers}
         std::string name;
         std::vector<std::string> headers;
+    };
+    struct make3D {
+        // MAKE {stock} WITH HEADERS ({2D headers}, {3D headers})
+        std::string name;
+        std::vector<std::string> headers_2d;
+        std::vector<std::string> headers_3d;
+    };
+    struct insert2D {
+        // INSERT {table} INTO {container} AT POSITION {int}
+        Choco2D::table table;
+        Choco2D::container container;
+        int pos;
+    };
+    struct insert3D {
+        // INSERT {stock} INTO {container} AT POSITION {int}
+        Choco3D::stock stock;
+        Choco3D::container container;
+        int pos;
     };
     
     // 2D functions
