@@ -1,5 +1,6 @@
 ![Chocolite logo: chocolate bar with a bite on the top left corner](https://i.ibb.co/b7G8Dnj/chocolite.png)
 ### <p align="center"><strong>An easy-to-use, no-frills SQL-like database system</strong></p>
+<p align="center"><sup>Not to be confused with <a href="https://github.com/dase955/ChocoDB">chocodb</a>. I have no idea if it's abandoned.</sup></p>
 
 # Why Chocolite?
 With Chocolite, you could simply do this in code (assuming you have a container `main` with a table `HelloWorld` initialised):
