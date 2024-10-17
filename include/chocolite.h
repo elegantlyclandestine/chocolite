@@ -1,6 +1,6 @@
 #pragma once
-#ifndef chocotables_h
-#define chocotables_h
+#ifndef chocolite_h
+#define chocolite_h
 
 #include <vector>
 #include <string>
@@ -11,12 +11,12 @@
 #include <optional>
 #include <any>
 
-#include "chocotables2d.h"
-#include "chocotables3d.h"
+#include "container2d.h"
+#include "container3d.h"
 
 namespace fs = std::filesystem;
 
-namespace Chocotables {
+namespace Chocolite {
     void write_db(std::string db_name);
     void read_db(std::string db_name);
 };
