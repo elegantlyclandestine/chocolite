@@ -6,6 +6,53 @@
 
 namespace CLQuery {
     /*
+      * Universal queries
+      * These work as 2D/3D queries.
+      * However, they accept strings instead of Chocolite objects.
+      * The variable `structure_name` will be influenced by what the
+      * integer `dimension` will have, itself influenced by the user's
+      * Chocolite query.
+    */
+    struct finalise {
+        // FINALISE {table/stock} IN {container}
+        int dimension;
+        std::string container_name;
+        std::string structure_name;
+    };
+    struct pick {
+        // PICK {data} FROM {table/stock} IN {container}
+        int dimension;
+        std::any data;
+        std::string container_name;
+        std::string structure_name;
+    };
+    struct wipe {
+        // WIPE {table/stock} IN {container}
+        int dimension;
+        Choco3D::container container;
+        Choco3D::stock stock;
+    };
+    struct build {
+        // BUILD {2D/3D} CONTAINER {container}
+        int dimension;
+        std::string structure;
+        std::string name;
+    };
+    struct insert {
+        // INSERT {table/stock} INTO {container} AT POSITION {int}
+        int dimension;
+        std::string structure_name;
+        std::string container_name;
+        int pos;
+    };
+    struct obfuscate {
+        // OBFUSCATE {table/stock} IN {container}
+        int dimension;
+        std::string structure_name;
+        std::string container_name;
+        std::string obfuscate_type;
+    }
+    /*
       * 2D queries
       * Handles 2D (table) database operations.
       * Accepts objects in the Choco2D namespace.
