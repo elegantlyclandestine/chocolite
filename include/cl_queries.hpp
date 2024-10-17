@@ -52,6 +52,7 @@ namespace CLQuery {
         std::string container_name;
         std::string obfuscate_type;
     }
+
     /*
       * 2D queries
       * Handles 2D (table) database operations.
