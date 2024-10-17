@@ -19,10 +19,12 @@ namespace Chocotables2D {
         std::string name;
         std::vector<std::string> headers;
         std::vector<Chocotables2D::cell> cells;
-        unsigned cols; unsigned rows;
     public:
-        table(std::string name, std::vector<std::string>& headers, std::vector<Chocotables2D::cell>& cells) :
-            name(name), headers(headers), cells(cells) {}
+        table(std::string name, std::vector<std::string>& headers):
+            name(name), headers(headers) {
+                // Read if there are any existing tables in container,
+                // count one for any found, then pos++
+            }
         ~table() {}
         std::any read_from_cell(int col, int row) {
             
@@ -57,7 +59,10 @@ namespace Chocotables2D {
     public:
         container(std::string name) :
             name(name), tables(tables) {}
-        Chocotables2D::table load_in_table (std::string& name) {
+        Chocotables2D::table load_table (std::string& name) {
+
+        }
+        std::any select_data_from_table(std::any content, Chocotables3D::stock) {
 
         }
         void add_table(Chocotables2D::table& table) {
@@ -71,6 +76,9 @@ namespace Chocotables2D {
         }
         void sort_table(Chocotables2D::table& table, std::string& sort_by) {
             
+        }
+        bool table_exists(const Chocotables2D::table& table) {
+
         }
         Chocotables2D::table find_table_from_data(std::any content) {
             
