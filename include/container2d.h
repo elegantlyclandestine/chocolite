@@ -2,7 +2,7 @@
 #ifndef choco_container2d_h
 #define choco_container2d_h
 
-#include "chocolite.h"
+#include <chocolite.h>
 
 namespace Choco2D {
     struct cell {
