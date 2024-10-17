@@ -17,7 +17,8 @@
 namespace fs = std::filesystem;
 
 namespace Chocotables {
-    
+    void write_db(std::string db_name);
+    void read_db(std::string db_name);
 };
 
 #endif
