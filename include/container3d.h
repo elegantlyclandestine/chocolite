@@ -9,7 +9,7 @@ namespace Choco3D {
         int x; int y; int z;
         std::string data_type;
         std::any content;
-        block(int x, int y, int z, std::string data_type, std::any content) :
+        block(int x = 0, int y = 0, int z = 0, std::string data_type = "", std::any content = "") :
             x(x), y(y), z(z), data_type(data_type), content(content) {}
         ~block() {}
     };
@@ -19,7 +19,7 @@ namespace Choco3D {
         std::string name;
         std::vector<Choco3D::block> blocks;
     public:
-        stock(std::string name) :
+        stock(std::string name = "", std::vector<Choco3D::block> blocks = {}) :
             name(name) {
                 // Read if there are any existing stocks in container,
                 // count one for any found, then pos++
@@ -49,7 +49,7 @@ namespace Choco3D {
         std::string name;
         std::vector<Choco3D::stock> stocks;
     public:
-        container(std::string name) :
+        container(std::string name = "", std::vector<Choco3D::stock> stocks = {}) :
             name(name), stocks(stocks) {}
         Choco3D::stock load_stock (std::string& name) {
 

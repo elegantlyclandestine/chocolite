@@ -9,7 +9,7 @@ namespace Choco2D {
         int col; int row;
         std::string data_type;
         std::any content;
-        cell(int col, int row, std::string data_type, std::any content) :
+        cell(int col = 0, int row = 0, std::string data_type = "", std::any content = "") :
             col(col), row(row), data_type(data_type), content(content) {}
         ~cell() {}
     };
@@ -20,7 +20,7 @@ namespace Choco2D {
         std::vector<std::string> headers;
         std::vector<Choco2D::cell> cells;
     public:
-        table(std::string name, std::vector<std::string>& headers):
+        table(std::string name = "", std::vector<std::string> headers = {}):
             name(name), headers(headers) {
                 // Read if there are any existing tables in container,
                 // count one for any found, then pos++
@@ -57,7 +57,7 @@ namespace Choco2D {
         std::string name;
         std::vector<Choco2D::table> tables;
     public:
-        container(std::string name) :
+        container(std::string name = "", std::vector<Choco2D::table> tables = {}) :
             name(name), tables(tables) {}
         Choco2D::table load_table (std::string& name) {
 
