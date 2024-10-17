@@ -2,7 +2,7 @@
 #ifndef choco_container3d_h
 #define choco_container3d_h
 
-#include "chocolite.h"
+#include <chocolite.h>
 
 namespace Choco3D {
     struct block {
@@ -18,6 +18,8 @@ namespace Choco3D {
         int pos;
         std::string name;
         std::vector<Choco3D::block> blocks;
+        std::vector<std::string> headers_2d;
+        std::vector<std::string> headers_3d;
     public:
         stock(std::string name = "", std::vector<Choco3D::block> blocks = {}) :
             name(name) {
@@ -42,6 +44,12 @@ namespace Choco3D {
         void shift_data(char coordinate, int origin, int offset) {
             // Will shift data depending on coordinate and offset.
             // -x = left; +x = right. -y = up, +y = down. -z = nearer, +z = farther.
+        }
+        void add_header(Choco3D::stock& stock, std::string header, int dimension) {
+            
+        }
+        void remove_header(Choco3D::stock& stock, std::string header, int dimension) {
+            
         }
     };
     class container {
