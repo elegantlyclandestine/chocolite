@@ -2,19 +2,18 @@
 ### <p align="center"><strong>An easy-to-use, no-frills SQL-like database system</strong></p>
 
 # Why Chocolite?
-With Chocolite, you could simply do this in code:
+With Chocolite, you could simply do this in code (assuming you have a container `main` with a table `HelloWorld` initialised:
 ```cpp
 std::string hello_world = Chocolite::interpret(
-    "BUILD 2D CONTAINER main
-     MAKE HelloWorld WITH HEADERS foo, bar
-     INSERT HelloWorld INTO main AT POSITION 0
-     PUSH "Hello" TO HelloWorld IN main AT 1,1
-     PUSH "World" TO HelloWorld IN main AT 1,2
+    "PUSH \"Hello\" TO HelloWorld IN main AT 1,1
+     PUSH \"World\" TO HelloWorld IN main AT 1,2
      GRAB DATA RANGE FROM 1,1 TO 1,2 FROM HelloWorld IN main"
 );
 std::cout << hello_world << std::endl;
 ```
 Or you can do all of this within the `chocolite` command-line application.
+
+(Pretty dumb example, but this is under construction, so...)
 
 # Origin
 Honestly… it was a random idea I had while trying to conceive ways to store story contents for one of my other pet projects, *[Storybook](https://github.com/elegantlyclandestine/Storybook)*. I had an idea on how I wanted to store the data for interactive Discord stories, while also inadvertently being able to obfuscate it in the process, so I decided that with my developed (but still limited) skills in C++, I would make my own database system.
