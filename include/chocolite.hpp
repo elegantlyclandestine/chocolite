@@ -14,6 +14,7 @@
 #include <cl_2d.hpp>
 #include <cl_3d.hpp>
 #include <cl_4d.hpp>
+#include <cl_poly.hpp>
 #include <cl_queries.hpp>
 
 namespace fs = std::filesystem;
@@ -27,6 +28,7 @@ namespace Chocolite {
         std::vector<Choco2D::table> tables;
         std::vector<Choco3D::stock> stocks;
         std::vector<Choco4D::tesseract> tesseracts;
+        std::vector<ChocoPoly::shape> polydimensional_shapes;
     public:
         container(std::string name = "", std::vector<Choco2D::table> tables = {}, std::vector<Choco3D::stock> stocks = {}, std::vector<Choco4D::tesseract> tesseracts = {}) :
             name(name), tables(tables), stocks(stocks), tesseracts(tesseracts) {}
