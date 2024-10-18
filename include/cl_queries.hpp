@@ -24,10 +24,8 @@ namespace CLQuery {
         bool delete_everything_on_table = true;
     };
     struct build {
-        // BUILD {2D/3D} CONTAINER {container}
-        int dimension;
-        std::string structure;
-        std::string name;
+        // BUILD CONTAINER {container}
+        std::string container_name;
     };
     struct insert : common {
         // INSERT {table/stock} INTO {container} AT POSITION {int}
