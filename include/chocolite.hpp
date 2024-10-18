@@ -19,6 +19,8 @@
 namespace fs = std::filesystem;
 
 namespace Chocolite {
+    enum data_structure { TABLE, STOCK, TESSERACT, POLYDIMENSIONAL };
+    enum sort_type { HEADER, DIMENSION, ALPHA_ASCENDING, ALPHA_DESCENDING };
     class container {
     private:
         std::string name;
