@@ -29,13 +29,14 @@ namespace Chocolite {
     };
     Chocolite::query check_query(std::string query);
     
+    // Universal functions
+    void unload_container(std::string container, int dimension);
+    
     // 2D functions
     Choco2D::container load_2d_container(std::string container);
-    void unload_2d_container(std::string container);
 
     // 3D functions
     Choco3D::container load_3d_container(std::string container);
-    void unload_3d_container(std::string container);
 };
 
 #endif
