@@ -13,24 +13,22 @@ namespace CLQuery {
       * integer `dimension` will have, itself influenced by the user's
       * Chocolite query.
     */
-    struct finalise {
+    struct common_universal {
+        int dimension;
+        std::string container_name;
+        std::string structure_name;
+    };
+    struct finalise : common_universal {
         // FINALISE {table/stock} IN {container}
-        int dimension;
-        std::string container_name;
-        std::string structure_name;
+        bool make_uneditable = true;
     };
-    struct pick {
+    struct pick : common_universal  {
         // PICK {data} FROM {table/stock} IN {container}
-        int dimension;
         std::any data;
-        std::string container_name;
-        std::string structure_name;
     };
-    struct wipe {
+    struct wipe : common_universal {
         // WIPE {table/stock} IN {container}
-        int dimension;
-        Choco3D::container container;
-        Choco3D::stock stock;
+        bool delete_everything_on_table = true;
     };
     struct build {
         // BUILD {2D/3D} CONTAINER {container}
@@ -38,19 +36,17 @@ namespace CLQuery {
         std::string structure;
         std::string name;
     };
-    struct insert {
+    struct insert : common_universal {
         // INSERT {table/stock} INTO {container} AT POSITION {int}
-        int dimension;
-        std::string structure_name;
-        std::string container_name;
-        int pos;
+        int position;
     };
-    struct obfuscate {
+    struct obfuscate : common_universal {
         // OBFUSCATE {table/stock} IN {container}
-        int dimension;
-        std::string structure_name;
-        std::string container_name;
         std::string obfuscate_type;
+    };
+    struct add_header : common_universal {
+        // ADD HEADER {header} TO {table/stock} AT DIMENSION {x/y/z} IN {container}
+        std::string header;
     };
 
     /*
@@ -58,25 +54,23 @@ namespace CLQuery {
       * Handles 2D (table) database operations.
       * Accepts objects in the Choco2D namespace.
     */
-    struct push2D {
+    struct common2D {
+        Choco2D::container container;
+        Choco2D::table table;
+    };
+    struct push2D : common2D {
         // PUSH {data} TO {table} IN {container} AT {x,y}
         std::any data;
-        Choco2D::container container;
-        Choco2D::table table;
         int x;
         int y;
     };
-    struct grab2D {
+    struct grab2D : common2D {
         // GRAB DATA ON {x,y} FROM {table} IN {container}
-        Choco2D::container container;
-        Choco2D::table table;
         int x;
         int y;
     };
-    struct grab_range2D {
+    struct grab_range2D : common2D {
         // GRAB DATA RANGE FROM {x1,y1} TO {x2,y2} FROM {table} IN {container}
-        Choco2D::container container;
-        Choco2D::table table;
         int x1; int y1;
         int x2; int y2;
     };
@@ -85,10 +79,8 @@ namespace CLQuery {
         std::string name;
         std::vector<std::string> headers;
     };
-    struct erase2D {
+    struct erase2D : common2D {
         // ERASE DATA FROM {x, y} ON {table} IN {container}
-        Choco2D::table table;
-        Choco2D::container container;
         int x;
         int y;
     };
@@ -98,27 +90,25 @@ namespace CLQuery {
       * Handles 3D (cuboid) database operations.
       * Takes objects in the Choco3D namespace.
     */
-    struct push3D {
+    struct common3D {
+        Choco3D::container container;
+        Choco3D::stock stock;
+    };
+    struct push3D : common3D {
         // PUSH {data} TO {stock} IN {container} AT {x,y,z}
         std::any data;
-        Choco3D::container container;
-        Choco3D::stock table;
         int x;
         int y;
         int z;
     };
-    struct grab3D {
+    struct grab3D : common3D  {
         // GRAB DATA ON {x,y,z} FROM {table} IN {container}
-        Choco3D::container container;
-        Choco3D::stock table;
         int x;
         int y;
         int z;
     };
-    struct grab_range3D {
+    struct grab_range3D : common3D  {
         // GRAB DATA RANGE FROM {x1,y1,z1} TO {x2,y2,z2} FROM {table} IN {container}
-        Choco3D::container container;
-        Choco3D::stock table;
         int x1; int y1; int z1;
         int x2; int y2; int z2;
     };
@@ -128,10 +118,8 @@ namespace CLQuery {
         std::vector<std::string> headers_2d;
         std::vector<std::string> headers_3d;
     };
-    struct erase3D {
+    struct erase3D : common3D  {
         // ERASE DATA FROM {x, y, z} ON {table} IN {container}
-        Choco3D::container container;
-        Choco3D::stock stock;
         int x;
         int y;
         int z;
