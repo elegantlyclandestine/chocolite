@@ -31,11 +31,11 @@ namespace Chocolite {
     
     // 2D functions
     Choco2D::container load_2d_container(std::string container);
-    Choco2D::container unload_2d_container(std::string container);
+    void unload_2d_container(std::string container);
 
     // 3D functions
     Choco3D::container load_3d_container(std::string container);
-    Choco3D::container unload_3d_container(std::string container);
+    void unload_3d_container(std::string container);
 };
 
 #endif
