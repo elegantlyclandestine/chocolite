@@ -29,20 +29,17 @@ namespace Chocolite {
         container(std::string name = "", std::vector<Choco2D::table> tables = {}, std::vector<Choco3D::stock> stocks = {}, std::vector<Choco4D::tesseract> tesseracts = {}) :
             name(name), tables(tables), stocks(stocks), tesseracts(tesseracts) {}
         ~container() {}
-        friend Choco2D::table load_table (std::string name);
-        friend Choco3D::stock load_stock (std::string name);
-        friend std::any select_data(std::any content, Choco3D::stock);
-        friend void add_table(Choco3D::stock& stock);
-        friend void remove(Choco3D::stock& stock);
-        friend void move(Choco3D::stock& stock, int pos);
-        friend void sort(Choco3D::stock& stock, std::string& sort_by);
-        friend bool stock_exists(const Choco3D::stock& stock);
+        friend void add_structure(std::string name, Chocolite::data_structure structure, Chocolite::container container);
+        friend void remove_structure(std::string name, Chocolite::data_structure structure, Chocolite::container container);
+        friend void move_pos(Choco3D::stock& stock, int pos);
+        friend void sort(std::string name, Chocolite::data_structure data_structure, std::string& sort_by);
+        friend bool structure_exists(std::string name, std::optional<Chocolite::data_structure> data_structure = std::nullopt);
         friend Choco2D::cell find_cell_from_data(std::any content);
         friend Choco2D::table find_table_from_data(std::any content);
         friend Choco3D::stock find_stock_from_data(std::any content);
         friend Choco3D::block find_block_from_data(std::any content);
-        friend std::vector<Choco3D::block> return_sort_3D(Choco3D::stock& stock, std::string& sort_by);
-        friend void transfer_stock(Choco3D::stock& stock, Chocolite::container& new_container);
+        friend void transfer(Chocolite::data_structure data_structure, std::string name, Chocolite::container& new_container);
+        friend std::any select_data(std::any content, Chocolite::data_structure data_structure, std::optional<bool> unique_only = false);
     };
 
     // For command line / user-side interactions
@@ -57,7 +54,7 @@ namespace Chocolite {
     Chocolite::query check_query(std::string query);
     
     Chocolite::container load_container(std::string container);
-    void unload_container(std::string container, int dimension);
+    void unload_container(std::string container);
 
 };
 
