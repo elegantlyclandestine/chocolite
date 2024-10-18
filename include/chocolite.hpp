@@ -55,8 +55,8 @@ namespace Chocolite {
     };
     Chocolite::query check_query(std::string query);
     
-    Chocolite::container load_container(std::string container);
-    void unload_container(std::string container);
+    void load_container(std::string container_name);
+    void unload_container(std::string container_name);
 
 };
 
