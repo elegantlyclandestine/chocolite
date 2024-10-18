@@ -5,28 +5,21 @@
 #include <chocolite.hpp>
 
 namespace CLQuery {
-    /*
-      * Universal queries
-      * These work as 2D/3D queries.
-      * However, they accept strings instead of Chocolite objects.
-      * The variable `structure_name` will be influenced by what the
-      * integer `dimension` will have, itself influenced by the user's
-      * Chocolite query.
-    */
-    struct common_universal {
+    // Common elements that any Chocolite query might use
+    struct common {
         int dimension;
         std::string container_name;
         std::string structure_name;
     };
-    struct finalise : common_universal {
+    struct finalise : common {
         // FINALISE {table/stock} IN {container}
         bool make_uneditable = true;
     };
-    struct pick : common_universal  {
+    struct pick : common  {
         // PICK {data} FROM {table/stock} IN {container}
         std::any data;
     };
-    struct wipe : common_universal {
+    struct wipe : common {
         // WIPE {table/stock} IN {container}
         bool delete_everything_on_table = true;
     };
@@ -36,93 +29,51 @@ namespace CLQuery {
         std::string structure;
         std::string name;
     };
-    struct insert : common_universal {
+    struct insert : common {
         // INSERT {table/stock} INTO {container} AT POSITION {int}
         int position;
     };
-    struct obfuscate : common_universal {
+    struct obfuscate : common {
         // OBFUSCATE {table/stock} IN {container}
         std::string obfuscate_type;
     };
-    struct add_header : common_universal {
-        // ADD HEADER {header} TO {table/stock} AT DIMENSION {x/y/z} IN {container}
+    struct add_header : common {
+        // ADD HEADER {header} TO {table/stock} AT {x/y/z} IN {container}
         std::string header;
     };
-
-    /*
-      * 2D queries
-      * Handles 2D (table) database operations.
-      * Accepts objects in the Choco2D namespace.
-    */
-    struct common2D {
-        Choco2D::container container;
-        Choco2D::table table;
+    struct lock : common {
+        // LOCK ELEMENT {coordinates} ON {table/stock} IN {container}
+        bool lock_element = true;
     };
-    struct push2D : common2D {
-        // PUSH {data} TO {table} IN {container} AT {x,y}
+    struct push : common {
+        // PUSH {data} TO {table/stock} IN {container} AT {coordinates}
         std::any data;
-        int x;
-        int y;
     };
-    struct grab2D : common2D {
-        // GRAB DATA ON {x,y} FROM {table} IN {container}
-        int x;
-        int y;
+    struct grab : common {
+        // GRAB DATA ON {coordinates} FROM {table/stock} IN {container}
+        std::vector<int> coordinates;
     };
-    struct grab_range2D : common2D {
-        // GRAB DATA RANGE FROM {x1,y1} TO {x2,y2} FROM {table} IN {container}
-        int x1; int y1;
-        int x2; int y2;
+    struct grab_range : common {
+        // GRAB DATA RANGE FROM {coordinates_origin} TO {coordinates_end} ON {table/stock} IN {container}
+        std::vector<int> coordinates_origin;
+        std::vector<int> coordinates_end;
     };
-    struct make2D {
-        // MAKE {table} WITH HEADERS {headers}
-        std::string name;
-        std::vector<std::string> headers;
+    struct make : common {
+        // MAKE {table/stock} WITHOUT LIMIT ON CONTAINER {container}
+        bool infinite = true;
     };
-    struct erase2D : common2D {
-        // ERASE DATA FROM {x, y} ON {table} IN {container}
-        int x;
-        int y;
+    struct make_fixed : common {
+        // MAKE {table/stock} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
+        std::vector<int> limit;
     };
-
-    /*
-      * 3D queries
-      * Handles 3D (cuboid) database operations.
-      * Takes objects in the Choco3D namespace.
-    */
-    struct common3D {
-        Choco3D::container container;
-        Choco3D::stock stock;
+    struct erase : common {
+        // ERASE DATA FROM {coordinates} ON {table/stock} IN {container}
+        std::vector<int> coordinates;
     };
-    struct push3D : common3D {
-        // PUSH {data} TO {stock} IN {container} AT {x,y,z}
-        std::any data;
-        int x;
-        int y;
-        int z;
-    };
-    struct grab3D : common3D  {
-        // GRAB DATA ON {x,y,z} FROM {table} IN {container}
-        int x;
-        int y;
-        int z;
-    };
-    struct grab_range3D : common3D  {
-        // GRAB DATA RANGE FROM {x1,y1,z1} TO {x2,y2,z2} FROM {table} IN {container}
-        int x1; int y1; int z1;
-        int x2; int y2; int z2;
-    };
-    struct make3D {
-        // MAKE {stock} WITH HEADERS ({2D headers}, {3D headers})
-        std::string name;
-        std::vector<std::string> headers_2d;
-        std::vector<std::string> headers_3d;
-    };
-    struct erase3D : common3D  {
-        // ERASE DATA FROM {x, y, z} ON {table} IN {container}
-        int x;
-        int y;
-        int z;
+    struct erase_range : common {
+        // ERASE DATA IN RANGE FROM {coordinates_origin} TO {coordinates_end} ON {table/stock} IN {container}
+        std::vector<int> coordinates_origin;
+        std::vector<int> coordinates_end;
     };
 }
 
