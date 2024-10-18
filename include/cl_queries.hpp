@@ -61,7 +61,14 @@ namespace CLQuery {
         bool infinite = true;
     };
     struct make_fixed : common {
-        // MAKE {table/stock/tesseract} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
+        // MAKE {data structure} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
+        std::vector<int> limit;
+    };
+    struct make_poly : common {
+        int dimensions;
+    };
+    struct make_poly_fixed : common {
+        int dimensions;
         std::vector<int> limit;
     };
     struct erase : common {
@@ -76,6 +83,10 @@ namespace CLQuery {
     struct remove : common {
         // REMOVE {data structure/container}
         bool recursive; // directive used if a data structure is defined generally and not by name
+    };
+    struct vault : common {
+        // PUT {data structure/container} IN VAULT WITH PASSWORD {password}
+        std::string password; // find a way to hash this safely - use salts
     };
 }
 
