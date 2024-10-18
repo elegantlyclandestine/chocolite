@@ -52,47 +52,6 @@ namespace Choco2D {
             
         }
     };
-    class container {
-    private:
-        std::string name;
-        std::vector<Choco2D::table> tables;
-    public:
-        container(std::string name = "", std::vector<Choco2D::table> tables = {}) :
-            name(name), tables(tables) {}
-        Choco2D::table load_table (std::string& name) {
-
-        }
-        std::any select_data_from_table(std::any content, Choco2D::table) {
-
-        }
-        void add_table(Choco2D::table& table) {
-            
-        }
-        void remove_table(Choco2D::table& table) {
-            
-        }
-        void move_table(Choco2D::table& table, int pos) {
-
-        }
-        void sort_table(Choco2D::table& table, std::string& sort_by) {
-            
-        }
-        bool table_exists(const Choco2D::table& table) {
-
-        }
-        Choco2D::table find_table_from_data(std::any content) {
-            
-        }
-        Choco2D::cell find_cell_from_data(std::any content) {
-            
-        }
-        std::vector<Choco2D::cell> return_sort_2D(Choco2D::table& table, std::string& sort_by) {
-            
-        }
-        void transfer_table(Choco2D::table& table, Choco2D::container& new_container) {
-            
-        }
-    };
 }
 
 #endif

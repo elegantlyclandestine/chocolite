@@ -52,47 +52,6 @@ namespace Choco3D {
             
         }
     };
-    class container {
-    private:
-        std::string name;
-        std::vector<Choco3D::stock> stocks;
-    public:
-        container(std::string name = "", std::vector<Choco3D::stock> stocks = {}) :
-            name(name), stocks(stocks) {}
-        Choco3D::stock load_stock (std::string& name) {
-
-        }
-        std::any select_data_from_stock(std::any content, Choco3D::stock) {
-
-        }
-        void add_table(Choco3D::stock& stock) {
-            
-        }
-        void remove_table(Choco3D::stock& stock) {
-            
-        }
-        void move_table(Choco3D::stock& stock, int pos) {
-
-        }
-        void sort_block(Choco3D::stock& stock, std::string& sort_by) {
-            
-        }
-        bool stock_exists(const Choco3D::stock& stock) {
-
-        }
-        Choco3D::stock find_stock_from_data(std::any content) {
-            
-        }
-        Choco3D::block find_block_from_data(std::any content) {
-            
-        }
-        std::vector<Choco3D::block> return_sort_3D(Choco3D::stock& stock, std::string& sort_by) {
-            
-        }
-        void transfer_stock(Choco3D::stock& stock, Choco3D::container& new_container) {
-            
-        }
-    };
 }
 
 #endif
