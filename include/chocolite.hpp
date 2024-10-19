@@ -29,18 +29,19 @@ namespace Chocolite {
     };
     class element {
     private:
+        Chocolite::shape parent_shape;
         std::vector<int> coordinates;
         std::string data_type;
         std::any content;
     public:
-        element(std::vector<int> coordinates, std::string data_type = "", std::any content = "") :
-            coordinates(coordinates), data_type(data_type), content(content) {}
+        element(Chocolite::shape parent_shape, std::vector<int> coordinates, std::string data_type = "", std::any content = "") :
+            parent_shape(parent_shape), coordinates(coordinates), data_type(data_type), content(content) {}
         ~element() {}
-        friend std::any read_element(std::vector<int> coordinates);
-        friend Chocolite::element load_element(std::vector<int> coordinates, Chocolite::load_type load_type);
-        friend void unload_element(Chocolite::element element);
-        friend void edit_element(std::vector<int> coordinates, std::any new_data);
-        friend void delete_element(std::vector<int> coordinates);
+        friend std::any read_element(Chocolite::shape shape, std::vector<int> coordinates);
+        friend Chocolite::element load_element(Chocolite::shape shape, std::vector<int> coordinates, Chocolite::load_type load_type);
+        friend void* unload_element(Chocolite::element& element);
+        friend void edit_element(Chocolite::shape& shape, std::vector<int> coordinates, std::any new_data);
+        friend void delete_element(Chocolite::shape& shape, std::vector<int> coordinates);
         friend void insert_data_to_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates, std::any content);
         friend void remove_data_from_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates);
         friend void move_data_between_elements(Chocolite::shape& shape, Chocolite::element& source, Chocolite::element& destination, std::optional<bool> overwrite = std::nullopt);
