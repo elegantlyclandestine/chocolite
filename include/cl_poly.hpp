@@ -21,8 +21,8 @@ namespace ChocoPoly {
         std::vector<ChocoPoly::element> elements;
         std::vector<std::pair<int, std::string>> headers;
     public:
-        shape(std::string name = "", std::vector<ChocoPoly::element> elements = {}) :
-            name(name), elements(elements) {
+        shape(int dimensions, std::string name = "", std::vector<ChocoPoly::element> elements = {}) :
+            dimensions(dimensions), name(name), elements(elements) {
                 // Read if there are any existing shapes in container,
                 // count one for any found, then pos++
             }
