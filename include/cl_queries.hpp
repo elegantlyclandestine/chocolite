@@ -32,8 +32,9 @@ namespace CLQuery {
         int position;
     };
     struct obfuscate : common {
-        // OBFUSCATE {data structure} IN {container}
-        std::string obfuscate_type;
+        // OBFUSCATE {data structure} IN {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+        // OBFUSCATE {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+        Chocolite::obfuscation_type obfuscation_type;
     };
     struct add_header : common {
         // ADD HEADER {header} TO {data structure} AT {x/y/z} IN {container}
@@ -83,10 +84,6 @@ namespace CLQuery {
     struct remove : common {
         // REMOVE {data structure/container}
         bool recursive; // directive used if a data structure is defined generally and not by name
-    };
-    struct vault : common {
-        // PUT {data structure/container} IN VAULT WITH PASSWORD {password}
-        std::string password; // find a way to hash this safely - use salts
     };
 }
 
