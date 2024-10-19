@@ -12,15 +12,15 @@ namespace CLQuery {
         std::string structure_name;
     };
     struct finalise : common {
-        // FINALISE {data structure} IN {container}
+        // FINALISE {shape} IN {container}
         bool make_uneditable = true;
     };
     struct pick : common  {
-        // PICK {data} FROM {data structure} IN {container}
+        // PICK {data} FROM {shape} IN {container}
         std::any data;
     };
     struct wipe : common {
-        // WIPE {data structure} IN {container}
+        // WIPE {shape} IN {container}
         bool delete_everything_on_table = true;
     };
     struct build {
@@ -28,41 +28,41 @@ namespace CLQuery {
         std::string container_name;
     };
     struct insert : common {
-        // INSERT {data structure} INTO {container} AT POSITION {int}
+        // INSERT {shape} INTO {container} AT POSITION {int}
         int position;
     };
     struct obfuscate : common {
-        // OBFUSCATE {data structure} IN {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+        // OBFUSCATE {shape} IN {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
         // OBFUSCATE {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
         Chocolite::obfuscation_type obfuscation_type;
     };
     struct add_header : common {
-        // ADD HEADER {header} TO {data structure} AT {x/y/z} IN {container}
+        // ADD HEADER {header} TO {shape} AT {x/y/z} IN {container}
         std::string header;
     };
     struct lock : common {
-        // LOCK ELEMENT {coordinates} ON {data structure} IN {container}
+        // LOCK ELEMENT {coordinates} ON {shape} IN {container}
         bool lock_element = true;
     };
     struct push : common {
-        // PUSH {data} TO {data structure} IN {container} AT {coordinates}
+        // PUSH {data} TO {shape} IN {container} AT {coordinates}
         std::any data;
     };
     struct grab : common {
-        // GRAB DATA ON {coordinates} FROM {data structure} IN {container}
+        // GRAB DATA ON {coordinates} FROM {shape} IN {container}
         std::vector<int> coordinates;
     };
     struct grab_range : common {
-        // GRAB DATA RANGE FROM {coordinates_origin} TO {coordinates_end} ON {data structure} IN {container}
+        // GRAB DATA RANGE FROM {coordinates_origin} TO {coordinates_end} ON {shape} IN {container}
         std::vector<int> coordinates_origin;
         std::vector<int> coordinates_end;
     };
     struct make : common {
-        // MAKE {data structure} WITHOUT LIMIT ON CONTAINER {container}
+        // MAKE {shape} WITHOUT LIMIT ON CONTAINER {container}
         bool infinite = true;
     };
     struct make_fixed : common {
-        // MAKE {data structure} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
+        // MAKE {shape} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
         std::vector<int> limit;
     };
     struct make_poly : common {
@@ -73,17 +73,17 @@ namespace CLQuery {
         std::vector<int> limit;
     };
     struct erase : common {
-        // ERASE DATA FROM {coordinates} ON {data structure} IN {container}
+        // ERASE DATA FROM {coordinates} ON {shape} IN {container}
         std::vector<int> coordinates;
     };
     struct erase_range : common {
-        // ERASE DATA IN RANGE FROM {coordinates_origin} TO {coordinates_end} ON {data structure} IN {container}
+        // ERASE DATA IN RANGE FROM {coordinates_origin} TO {coordinates_end} ON {shape} IN {container}
         std::vector<int> coordinates_origin;
         std::vector<int> coordinates_end;
     };
     struct remove : common {
-        // REMOVE {data structure/container}
-        bool recursive; // directive used if a data structure is defined generally and not by name
+        // REMOVE {shape/container}
+        bool recursive; // directive used if a shape is defined generally and not by name
     };
 }
 

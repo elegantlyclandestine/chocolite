@@ -38,3 +38,4 @@ build/
 # Others
 .vscode
 .DS_Store
+.archive
