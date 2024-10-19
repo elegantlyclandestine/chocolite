@@ -18,7 +18,11 @@ namespace fs = std::filesystem;
 namespace Chocolite {
     enum sort_type { HEADER, DIMENSION, ASCENDING, DESCENDING, FOR_EVERY_RANGE };
     enum obfuscation_type { ENCRYPT, FILL_RANDOM, FILL_SIMILAR, SCATTER };
-    enum query { 
+    enum load_type { READONLY, WRITABLE, WORM };
+    enum find_type { DATA, ELEMENT_NAME, SHAPE_CONTENTS, SHAPE_NAME, CONTAINER_CONTENTS, CONTAINER_NAME };
+    enum wipe_type { ALL, SELECTIVE };
+    enum wipe_filter { NUMERICAL, ALPHABETICAL, };
+    enum query {
         FINALISE, PICK, WIPE, BUILD, INSERT, OBFUSCATE,
         ADD_HEADER, LOCK, PUSH, GRAB, GRAB_RANGE, MAKE,
         MAKE_FIXED, MAKE_POLY, MAKE_POLY_FIXED, ERASE,
