@@ -25,8 +25,7 @@ namespace Chocolite {
     enum query {
         FINALISE, PICK, WIPE, BUILD, INSERT, OBFUSCATE,
         ADD_HEADER, LOCK, PUSH, GRAB, GRAB_RANGE, MAKE,
-        MAKE_FIXED, MAKE_POLY, MAKE_POLY_FIXED, ERASE,
-        ERASE_RANGE, REMOVE
+        MAKE_FIXED, ERASE, ERASE_RANGE, REMOVE, MANIP_D
     };
     struct element {
         std::vector<int> coordinates;
