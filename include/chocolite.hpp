@@ -36,6 +36,16 @@ namespace Chocolite {
         element(std::vector<int> coordinates, std::string data_type = "", std::any content = "") :
             coordinates(coordinates), data_type(data_type), content(content) {}
         ~element() {}
+        friend std::any read_element(std::vector<int> coordinates);
+        friend Chocolite::element load_element(std::vector<int> coordinates, Chocolite::load_type load_type);
+        friend void unload_element(Chocolite::element element);
+        friend void edit_element(std::vector<int> coordinates, std::any new_data);
+        friend void delete_element(std::vector<int> coordinates);
+        friend void insert_data_to_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates, std::any content);
+        friend void remove_data_from_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates);
+        friend void move_data_between_elements(Chocolite::shape& shape, Chocolite::element& source, Chocolite::element& destination, std::optional<bool> overwrite = std::nullopt);
+        friend bool element_exists(std::string value, Chocolite::find_type find_type);
+        friend std::vector<Chocolite::element> search_elements(std::string value, Chocolite::find_type find_type);
     };
     class shape {
     private:
@@ -50,11 +60,8 @@ namespace Chocolite {
                 // Read if there are any existing shapes in container,
                 // count one for any found, then pos++
             }
-        friend std::any read_from_element(Chocolite::shape& shape, std::vector<int> coordinates);
-        friend Chocolite::element find_element_from_data(Chocolite::shape& shape, std::any content);
-        friend void insert_data_to_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates, std::any content);
-        friend void remove_data_from_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates);
-        friend void move_data_between_elements(Chocolite::shape& shape, Chocolite::element& source, Chocolite::element& destination, std::optional<bool> overwrite = std::nullopt);
+        ~shape() {}
+        friend Chocolite::shape load_shape(std::string name, Chocolite::load_type load_type);
         friend void shift_data(Chocolite::shape& shape, std::vector<int> coordinates, int origin, int offset);
         friend void add_header(Chocolite::shape& shape, std::string header, int dimension);
         friend void remove_header(Chocolite::shape& shape, std::string header, int dimensions);
@@ -80,12 +87,10 @@ namespace Chocolite {
         friend void transfer_shape_to_container(std::string name, Chocolite::container& new_container);
         friend std::any select_data_from_shape(std::any content, std::optional<bool> unique_only = false);
     };
+
     Chocolite::query check_query(std::string stream);
-    
     void load_container(std::string container_name);
     void unload_container(std::string container_name);
-    void parse_query(std::string stream);
-
 };
 
 #endif
