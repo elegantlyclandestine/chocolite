@@ -56,6 +56,8 @@ namespace Chocolite {
         friend void shift_data(Chocolite::shape& shape, std::vector<int> coordinates, int origin, int offset);
         friend void add_header(Chocolite::shape& shape, std::string header, int dimension);
         friend void remove_header(Chocolite::shape& shape, std::string header, int dimensions);
+        friend void manipulate_dimensions(Chocolite::shape shape, int new_dimensions, std::optional<bool> destructive = std::nullopt);
+        friend void reset_shape(Chocolite::shape& shape);
     };
     class container {
     private:
