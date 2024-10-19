@@ -7,21 +7,22 @@
 namespace CLQuery {
     // Common elements that any Chocolite query might use
     struct common {
-        int dimension;
         std::string container_name;
-        std::string structure_name;
+        std::string shape_name;
     };
     struct finalise : common {
         // FINALISE {shape} IN {container}
-        bool make_uneditable = true;
+        bool make_uneditable;
     };
     struct pick : common  {
         // PICK {data} FROM {shape} IN {container}
         std::any data;
     };
     struct wipe : common {
-        // WIPE {shape} IN {container}
-        bool delete_everything_on_table = true;
+        // WIPE ALL FROM {shape} IN {container}
+        // WIPE DATA FROM {shape} IN {container} BASED ON {filters}
+        std::optional<Chocolite::wipe_type> delete_everything_on_shape = std::nullopt;
+        std::optional<std::vector<Chocolite::wipe_filter>> filters = std::nullopt;
     };
     struct build {
         // BUILD CONTAINER {container}
@@ -31,9 +32,11 @@ namespace CLQuery {
         // INSERT {shape} INTO {container} AT POSITION {int}
         int position;
     };
-    struct obfuscate : common {
-        // OBFUSCATE {shape} IN {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+    struct obfuscate {
         // OBFUSCATE {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+        // OBFUSCATE {shape} IN {container} WITH {ENCRYPTION/RANDFILL/SAMEFILL/SCATTER}
+        std::string container_name;
+        std::optional<std::string> shape_name = std::nullopt;
         Chocolite::obfuscation_type obfuscation_type;
     };
     struct add_header : common {
@@ -58,18 +61,11 @@ namespace CLQuery {
         std::vector<int> coordinates_end;
     };
     struct make : common {
-        // MAKE {shape} WITHOUT LIMIT ON CONTAINER {container}
+        // MAKE {shape} WITH {int} DIMENSIONS WITHOUT LIMIT ON CONTAINER {container}
         bool infinite = true;
     };
     struct make_fixed : common {
-        // MAKE {shape} WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
-        std::vector<int> limit;
-    };
-    struct make_poly : common {
-        int dimensions;
-    };
-    struct make_poly_fixed : common {
-        int dimensions;
+        // MAKE {shape} WITH {int} DIMENSIONS WITH LIMITS UP TO COORDINATES {coordinates} ON CONTAINER {container}
         std::vector<int> limit;
     };
     struct erase : common {
@@ -85,6 +81,10 @@ namespace CLQuery {
         // REMOVE {shape/container}
         bool recursive; // directive used if a shape is defined generally and not by name
     };
-}
+    struct manip_d : common {
+        // MANIPULATE DIMENSIONS TO {int} ON {shape} IN {container}
+        bool destructive; // directive used if user wants to destroy data in affected dimensions
+    };
+};
 
 #endif
