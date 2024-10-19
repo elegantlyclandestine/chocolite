@@ -45,31 +45,14 @@ namespace Chocolite {
                 // Read if there are any existing shapes in container,
                 // count one for any found, then pos++
             }
-        std::any read_from_element(std::vector<int> coordinates) {
-            
-        }
-        Chocolite::element find_element_from_data(std::any content) {
-
-        }
-        void insert_data_to_element(Chocolite::element& element, std::vector<int> coordinates, std::any content) {
-
-        }
-        void remove_data_from_element(Chocolite::element& element, std::vector<int> coordinates){
-            
-        }
-        void move_data_between_elements(Chocolite::element& source, Chocolite::element& destination, std::optional<bool> overwrite = std::nullopt) {
-            
-        }
-        void shift_data(std::vector<int> coordinates, int origin, int offset) {
-            // Will shift data depending on coordinates and offset.
-            // This will depend on the number of dimensions the shape has.
-        }
-        void add_header(Chocolite::shape& shape, std::string header, int dimension) {
-            
-        }
-        void remove_header(Chocolite::shape& shape, std::string header, int dimensions) {
-            
-        }
+        friend std::any read_from_element(Chocolite::shape& shape, std::vector<int> coordinates);
+        friend Chocolite::element find_element_from_data(Chocolite::shape& shape, std::any content);
+        friend void insert_data_to_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates, std::any content);
+        friend void remove_data_from_element(Chocolite::shape& shape, Chocolite::element& element, std::vector<int> coordinates);
+        friend void move_data_between_elements(Chocolite::shape& shape, Chocolite::element& source, Chocolite::element& destination, std::optional<bool> overwrite = std::nullopt);
+        friend void shift_data(Chocolite::shape& shape, std::vector<int> coordinates, int origin, int offset);
+        friend void add_header(Chocolite::shape& shape, std::string header, int dimension);
+        friend void remove_header(Chocolite::shape& shape, std::string header, int dimensions);
     };
     class container {
     private:
