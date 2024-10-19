@@ -27,10 +27,12 @@ namespace Chocolite {
         ADD_HEADER, LOCK, PUSH, GRAB, GRAB_RANGE, MAKE,
         MAKE_FIXED, ERASE, ERASE_RANGE, REMOVE, MANIP_D
     };
-    struct element {
+    class element {
+    private:
         std::vector<int> coordinates;
         std::string data_type;
         std::any content;
+    public:
         element(std::vector<int> coordinates, std::string data_type = "", std::any content = "") :
             coordinates(coordinates), data_type(data_type), content(content) {}
         ~element() {}
