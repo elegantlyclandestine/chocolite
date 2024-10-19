@@ -1,11 +1,15 @@
 #include <chocolite.hpp>
 
-Chocolite::query check_query(std::string stream) {
+std::vector<std::string> parse_query(std::string stream) {
+
+}
+
+Chocolite::query check_query(std::vector<std::string> tokenised_stream) {
     // Add logic to check syntax. You're going to need to tokenise the queries.
 }
 
-void parse_query(std::string stream) {
-    switch(check_query(stream)) {
+void parse_query(std::vector<std::string> tokenised_stream) {
+    switch(check_query(tokenised_stream)) {
         case Chocolite::query::FINALISE:
 
             break;
@@ -43,12 +47,6 @@ void parse_query(std::string stream) {
 
             break;
         case Chocolite::query::MAKE_FIXED:
-
-            break;
-        case Chocolite::query::MAKE_POLY:
-
-            break;
-        case Chocolite::query::MAKE_POLY_FIXED:
 
             break;
         case Chocolite::query::ERASE:
